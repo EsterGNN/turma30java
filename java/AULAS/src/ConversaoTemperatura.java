@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class ConversaoTemperatura {
 	
 	public static void main(String[] args){
+		Scanner leia = new Scanner(System.in);
 		Locale.setDefault(Locale.US); //Padrão estaduniense 
 		String nome; 
 		double temperaturaC, temperaturaF;
-		Scanner leia = new Scanner(System.in);
 		
 		System.out.print("Qual seu nome? ");
 		nome = leia.nextLine();
