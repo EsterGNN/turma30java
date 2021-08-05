@@ -128,27 +128,24 @@ inclua biblioteca Matematica --> Mat
 										se(sn=='s' ou sn=='S'){					//Desvio Condicional para validar a quantidade da compra
 											escreva("\nQual a quantidade? \n")		//Pergunta ao cliente
 											leia(quantidade)					//Leitura da quantidade
-											se(quantidade>0 e quantidade<=ESTOQUE[x]){	
-												carrinho = quantidade*VALOR[x]	//Coloca no Carrinho a quantidade para exibição
-												escreva ("CARRINHO ATUAL: ", quantidade,"  x  ", PRODUTO[x],"\t Valor Unitário: R$", VALOR[x], "\t TOTAL: R$",carrinho,"\n") //Exibição do carrinho para validação do cliente
-												escreva("\nCONFIRMA?? [S ou N]\n")		//Confirmação do cliente
-												leia(sn)							//Leitura de sn
-												se(sn=='s' ou sn=='S'){				//Desvio condicional para Validação do estoque
-																				//Se pedido é válido, faz as alterações
-												qtdeCompra+=quantidade				//Coloca a quantidade de compras = quantidade que estava no carrinho
-												valorFinal+=carrinho				//Valor final da compra soma com o que foi colocado no carrinho
-												ESTOQUE[x]= ESTOQUE[x]-quantidade		//Retira a quantidade solicitada de produtos do estoque
-												PRODUTOFINAL[x]=PRODUTO[x]			//Coloca o produto pedido no vetor do carrinho
-												se(PRODUTO[x]==PRODUTOFINAL[x]){		//Condicional para validar se o produto já está no carrinho
-												VALORFINAL[x]+=carrinho				//Se já estiver, soma o valor atual do carrinho para mostrar atualizado
-												QTDEFINAL[x]+=quantidade				//Se já estiver soma a quantidade do carrinho para mostrar atualizado
-													}
-												}
-											}senao{
-												escreva("ESTOQUE INDISPONÍVEL! \nVERIFIQUE A LISTA E INFORME UMA QUANTIDADE VÁLIDA\nAPERTE ENTER PARA CONTINUAR\n\n") //Caso pedido seja inválido, quebra o Desvio, não faz as alterações futuras e retorna para a tela de compra
+											carrinho = quantidade*VALOR[x]		//Coloca no Carrinho a quantidade para exibição
+											escreva ("CARRINHO ATUAL: ", quantidade,"  x  ", PRODUTO[x],"\t Valor Unitário: R$", VALOR[x], "\t TOTAL: R$",carrinho,"\n") //Exibição do carrinho para validação do cliente
+											escreva("\nCONFIRMA?? [S ou N]\n")		//Confirmação do cliente
+											leia(sn)							//Leitura de sn
+											se(sn=='s' ou sn=='S'){				//Desvio condicional para Validação do estoque
+												se(quantidade>ESTOQUE[x])		//Verifica se pedido é válido
+												{escreva("ESTOQUE INDISPONÍVEL!\n\n") //Caso pedido seja inválido, quebra o Desvio, não faz as alterações futuras e retorna para a tela de compra
 												leia(y)
-												
-											
+												pare 
+												} senao						//Se pedido é válido, faz as alterações
+											qtdeCompra+=quantidade				//Coloca a quantidade de compras = quantidade que estava no carrinho
+											valorFinal+=carrinho				//Valor final da compra soma com o que foi colocado no carrinho
+											ESTOQUE[x]= ESTOQUE[x]-quantidade		//Retira a quantidade solicitada de produtos do estoque
+											PRODUTOFINAL[x]=PRODUTO[x]			//Coloca o produto pedido no vetor do carrinho
+											se(PRODUTO[x]==PRODUTOFINAL[x]){		//Condicional para validar se o produto já está no carrinho
+											VALORFINAL[x]+=carrinho				//Se já estiver, soma o valor atual do carrinho para mostrar atualizado
+											QTDEFINAL[x]+=quantidade				//Se já estiver soma a quantidade do carrinho para mostrar atualizado
+											}
 										}
 									}escreva("\nSALDO RESTANTE: ", PRODUTO[x],"\t",ESTOQUE[x],"\n")			//Exibe a quantidade atualizada do estoque do produto pedido
 								}
@@ -282,7 +279,7 @@ inclua biblioteca Matematica --> Mat
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 15203; 
+ * @POSICAO-CURSOR = 12690; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
