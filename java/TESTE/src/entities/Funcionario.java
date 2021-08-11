@@ -4,8 +4,10 @@ public class Funcionario {
 	
 	//ATRIBUTOS
 	private String matricula;
-	private int horasTrabalhadas;
-	private double valorPorHora;
+	//private int horasTrabalhadas;
+	protected int horasTrabalhadas;
+	//private double valorPorHora;
+	protected double valorPorHora;
 	
 	//CONSTRUTORES
 	public Funcionario(String matricula, int horasTrabalhadas, double valorPorHora) {

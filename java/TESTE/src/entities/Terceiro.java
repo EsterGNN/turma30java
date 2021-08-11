@@ -22,7 +22,8 @@ public class Terceiro extends Funcionario{
 	//MÉTODO
 	@Override
 	public double calculoSalario(){
-		return ((super.getHorasTrabalhadas()*super.getValorPorHora())+this.adicional);
+		return ((horasTrabalhadas*valorPorHora)+this.adicional); //NESSE CASO COLA PROTECTED NESSAS VARIÁVEIS NA SUPERCLASSE 
+		//return ((super.getHorasTrabalhadas()*super.getValorPorHora())+this.adicional);
 	}
 	
 }
