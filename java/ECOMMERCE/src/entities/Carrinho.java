@@ -77,6 +77,13 @@ public class Carrinho {
 			}
 		}
 	}
+	
+	public void mostraCarrinhoNF() {
+		System.out.println();
+		for (Carrinho x : carrinho) {
+			System.out.printf("%d x %s - %.2f\n", x.getQuantidade(), x.getNome(), x.getValor()); 
+		}
+	}
 
 	public void limparCarrinho() {
 		carrinho.clear();
