@@ -1,7 +1,6 @@
 package programs;
 
 import java.util.*;
-
 import entities.*;
 
 public class PedidoCliente {
@@ -13,6 +12,8 @@ public class PedidoCliente {
 		List<Produto> vitrine = new ArrayList<>();
 		String y = "Grupo1";
 		double somaValorTotal = 0.0;
+		char formaDePagamento;
+
 		// List<Carrinho> carrinho = new ArrayList<>();
 
 		char op = 'S';
@@ -30,7 +31,7 @@ public class PedidoCliente {
 
 		do {
 			loja.mostraCabecalhoNF();
-			System.out.println("Deseja Fazer compras? [S / N]");
+			System.out.printf("Deseja Fazer compras?[S/N] ");
 			op = leia.next().toUpperCase().charAt(0);
 			if (op == 'S') {
 				do {
@@ -41,16 +42,16 @@ public class PedidoCliente {
 					}
 					carrinho.mostraCarrinho();
 
-					System.out.println("\nInforme  o codigo do produto que deseja comprar: ");
+					System.out.printf("\nInforme o codigo do produto que deseja comprar: ");
 					String codCar = leia.next().toUpperCase();
 					for (Produto x : vitrine) {
 						if (codCar.equals(x.getCodigo())) {
-							System.out.printf("Informe a Quantidade de %s :", x.getNome());
+							System.out.printf("Informe a quantidade desejada de %s: ", x.getNome());
 							int qtdCar = leia.nextInt();
 							if (qtdCar > 0 && qtdCar <= x.getEstoque()) {
 								carrinho.entraCarrinho(x.getNome(), codCar, x.getValor(), qtdCar);
 								somaValorTotal += (qtdCar * x.getValor());
-								System.out.println("TOTAL R$" + somaValorTotal);
+								System.out.println("Total: R$ " + somaValorTotal);
 								x.retiraEstoque(qtdCar);
 
 							} else {
@@ -65,9 +66,19 @@ public class PedidoCliente {
 					op = leia.next().toUpperCase().charAt(0);
 
 				} while (op == 'S'); // FIM DO LAÇO DA VITRINE (DO PEDIDO DO CLIENTE), AGORA SEGUE PARA PAGAMENTO
+
+				do {
+				loja.menuPagamento();
+				formaDePagamento = leia.next().charAt(0);
+				} while (formaDePagamento != '1' && formaDePagamento != '2'  && formaDePagamento != '3');
 				
-				//NOTA FISCAL
+				loja.mostraCabecalhoNF();
+				carrinho.mostraCarrinho();
+				loja.formaDePagamento(formaDePagamento, somaValorTotal);
+				carrinho.limparCarrinho();
 				
+				System.out.printf("\nDeseja voltar ao início?[S/N] ");
+				op = leia.next().toUpperCase().charAt(0);
 				
 			} else {
 				System.out.println("~ ~ Ate Breve!");

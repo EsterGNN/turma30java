@@ -1,4 +1,6 @@
-import java.util.*;
+package Procedural;
+
+import java.util.Scanner;
 
 public class VersaoFinalCompleta {
 	public static void main(String[] args) {
